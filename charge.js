@@ -76,4 +76,19 @@ router.get('/store', function(req, res, next) {
     }
   });
 });
+
+router.get('/store/products', function(req, res, next) {
+  request({
+    uri: 'https://api.printful.com/store/products',
+  
+    function(error, response, body) {
+      if (!error && response.statusCode === 200) {
+        console.log(body);
+        res.json(body);
+      } else {
+        res.json(error);
+      }
+    }
+  });
+});
 module.exports = server;
