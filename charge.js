@@ -62,7 +62,7 @@ server.get("/store", async (request, response) => {
   response.json(data);
 });
 
-server.get("/store/products", async (request, response) => {
+server.get("/api/store/products", async (request, response) => {
   console.log(request.params);
 
   const url = `https://api.printful.com/store/products`;
