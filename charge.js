@@ -63,10 +63,12 @@ server.get("/store", async (request, response) => {
 });
 
 server.get("/api/store/products", async (request, response) => {
-  console.log(request.params);
+  const headers = {
+    Authorization: "Basic MzQyOXlzZ2QtMGVmMC1wMndxOmk3ODcteDBsY2xoZG1udnpp",
+  }
 
   const url = `https://api.printful.com/store/products`;
-  const res = await fetch(url);
+  const res = await fetch(url,{headers});
   const data = await res.json();
 
   response.json(data);
