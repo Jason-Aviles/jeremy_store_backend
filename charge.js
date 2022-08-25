@@ -63,6 +63,7 @@ server.get("/store", async (request, response) => {
 });
 
 server.get("/api/store/products", async (request, response) => {
+  
   const headers = {
     Authorization: "Basic MzQyOXlzZ2QtMGVmMC1wMndxOmk3ODcteDBsY2xoZG1udnpp",
   }
@@ -73,5 +74,16 @@ server.get("/api/store/products", async (request, response) => {
 
   response.json(data);
 });
-
+server.get("/api/store/products/:id", async (request, response) => {
+  const {id} = request.params
+    const headers = {
+      Authorization: "Basic MzQyOXlzZ2QtMGVmMC1wMndxOmk3ODcteDBsY2xoZG1udnpp",
+    }
+  
+    const url = `https://api.printful.com/store/products/${id}`;
+    const res = await fetch(url,{headers});
+    const data = await res.json();
+  
+    response.json(data);
+  });
 module.exports = server;
